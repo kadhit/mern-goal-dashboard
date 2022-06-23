@@ -13,8 +13,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/goals', require('./routes/routes'));
+// Routing
+app.use('/api/goals', require('./routes/goalRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
+// Error Handling
 app.use(errorHandler);
 
+// Establishing Connection
 app.listen(port, () => console.log(`Server running on port ${port}`));
