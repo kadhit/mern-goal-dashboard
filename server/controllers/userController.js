@@ -43,7 +43,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    AuthenticateUser
-// @route   POST /api/login
+// @route   POST /api/users/login
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
@@ -67,7 +67,13 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/me
 // @access  Private
 const getUserData = asyncHandler(async (req, res) => {
-    res.json({message: 'User Data Display'});
+    const { _id, name, email } = await User.findById(req.user.id);
+
+    res.status(200).json({
+        id: _id,
+        name,
+        email,
+    });
 });
 
 // Generate JWT
