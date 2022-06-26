@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "client": "npm start --prefix client"
+    
   },
   "repository": {
     "type": "git",
